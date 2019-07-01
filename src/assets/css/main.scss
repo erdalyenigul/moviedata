@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Ranga:400,700&display=swap&subset=latin-ext');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{text-decoration: none;}
+*{box-sizing: border-box; transition:all 0.3s ease;}
+body{font-family: 'Muli', sans-serif;}
+
+header {display: flex; align-items: center; justify-content: center; width:100%; background:#222; height: 80px; color:#fff; z-index: 3; position: relative; box-shadow: 10px 0px 10px #000;
+	.headerContent{display: flex; align-items: center; justify-content: space-between; width:100%; max-width:100%; padding:0 20px;
+		.headLeft{display:flex; align-items: center; justify-content: center; padding:10px; 
+			a{color:#fff; display:flex; align-items: center; justify-content: center; 
+				img{max-width: 40px;}
+				span{padding-left:10px; font-family: 'Ranga'; font-size:32px; padding-top:5px;}
+			}
+		}
+		.headRight{display: flex; align-items: center; justify-content: center;
+			.developerBtn{color:#fff; padding:0 10px; background-color: #111; height: 40px; display: flex; align-items: center;
+				i{font-size:34px; padding-top: 3px; display: inline-block;}
+				span{margin-left:10px;}
+			}
+		}
+	}
+}
+
+.cardsDeck{float:left; width:100%; columns: 4; column-gap: 30px; padding:20px;
+	.card{float:left; width:100%; padding:20px; border:1px solid #eee; margin-bottom: 30px; overflow:hidden; break-inside: avoid;
+		a{color:#222;}
+		div{display:flex; align-items:center; width:100%; margin-bottom: 20px;}
+		.poster{float:left; width:100%;
+			img{width: 100%;}
+		}
+		.title{font-size:22px; line-height: 26px; font-weight: bold;}
+		.overview{font-size:16px; line-height: 20px;}
+		.releaseDate{font-size:14px;}
+		.voteAverage{}
+		.trailer{
+			a{text-decoration: underline; color:#222;}
+		}
+		.details{
+			i{font-size:22px; padding-left:10px;}
+		}
+	}
+}
+.mdBg{position: fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index: 1;
+	.mdBgOverlay{position: absolute; top:0; right:0; left:0; bottom:0; width:100%; height: 100%; background:rgba(0,0,0,0.8);}
+	.mdBgImg{width:100%; height:100%; display:flex; background-position: center; background-attachment: fixed; background-size:cover;
+	}
+}
+
+.movieDetails{display: flex; align-items: center; justify-content: center; width:100%; max-width:1040px; margin:0 auto;
+	.movieDetailsList{display: flex; align-items: center; justify-content: space-between; width:100%; z-index: 2; position: relative; padding:30px; background-color:#fff; flex-direction: column; margin-top: 50px;
+		.content{display: flex; align-items: flex-start; justify-content: flex-start; color:#222; margin-bottom: 50px; border-bottom:1px solid #bbb; padding-bottom:50px;
+			.poster{width:300px; border:1px solid #eee;
+				img{width:100%; display:block;}
+			}
+			.detailsText{width:calc(100% - 300px); padding-left:30px;
+				div{float:left; width:100%; margin-bottom: 20px;}
+				.title{font-size:50px; font-weight: bold; font-family: 'Ranga'; letter-spacing: 1px; margin-bottom: 0;}
+				.genres{float:left; width:100%; margin-bottom: 20px;
+					li{float:left; padding-right:20px;
+						&:nth-last-child(1) {
+							span{display:none;}
+						}
+					}
+				}
+				.overview{font-size:16px; line-height: 22px}
+				.website{font-size:16px;
+					a{color:#222; text-decoration: underline;}
+				}
+				.imdb{font-size:16px;
+					a{color:#222; text-decoration: underline;}
+				}
+			}
+		}
+		.video{float:left; width:100%;
+			.trailerHead{float:left; width:100%; font-size:18px; line-height: 24px; padding-bottom:10px;}
+		}
+	}
+}
+
+.search{display: flex; align-items: center; justify-content: center; width:100%; height:100px;	background-color:#d6d6d6; z-index: 2; position: relative;
+	.inputWrap{display: flex; align-items: center; justify-content: center; position: relative; width:60%;
+		input{float:left; width:100%; height:60px; border:1px solid #bbb; border-radius: 30px; border:0; padding:0 20px; font-size:16px; outline:0;}
+		.searchBtn{position: absolute; right: 5px; top: 5px; border-radius: 30px; background-color: #6b93c5; color: #fff; height: 50px; width: 100px; display: flex; align-items: center; justify-content: center;}
+	}
+}
+
+.pageHeadline{float:left; width:100%; margin-top: 20px; text-align: center; padding:20px; font-weight: bold; font-size:22px;}
+
+.developer{display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top:50px;
+	p{margin-bottom:20px; text-align: center; font-size:16px; line-height: 22px; padding:0 20px;}
+}
+
+
+@media (max-width: 1023px) {
+	.cardsDeck{columns:1;}
+	.search .inputWrap{width:90%;}
+	header .headerContent{padding:0 10px;}
+	header .headerContent .headLeft a span{font-size:26px;}
+	.movieDetails .movieDetailsList .content{flex-direction: column; margin-bottom: 35px; padding-bottom: 25px;}
+	.movieDetails .movieDetailsList .content .poster{width:100%; margin-bottom: 20px;}
+	.movieDetails .movieDetailsList .content .detailsText{width:100%; padding-left:0;}
+	.movieDetails .movieDetailsList .content .detailsText .genres{line-height: 22px;}
+	.movieDetails .movieDetailsList .video .trailerHead{font-size:16px;}
+	.movieDetails .movieDetailsList .video iframe{height:200px;}
+	.movieDetails .movieDetailsList{margin-top:0;}
+}
