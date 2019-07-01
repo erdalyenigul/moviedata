@@ -4,8 +4,6 @@
 
 Demo : http://moviedata.rf.gd/
 
-https://themoviedb.org/ API
-
 ## Project setup
 ```
 npm install
@@ -33,3 +31,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+API : https://themoviedb.org/
