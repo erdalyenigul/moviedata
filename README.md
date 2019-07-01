@@ -2,9 +2,9 @@
 
 # Movie information application 
 
-# Using https://themoviedb.org/ API
+## Demo : http://moviedata.rf.gd/
 
-# Demo : http://moviedata.rf.gd/
+### Using https://themoviedb.org/ API
 
 ## Project setup
 ```
