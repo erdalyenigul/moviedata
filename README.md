@@ -1,5 +1,8 @@
 # moviedata
 
+Film information application 
+Demo : http://moviedata.rf.gd/
+
 ## Project setup
 ```
 npm install
