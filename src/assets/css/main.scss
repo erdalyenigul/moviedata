@@ -65,6 +65,8 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 	}
 }
 
+.popular{float:left; width:100%; margin-bottom: 50px;}
+
 .cardsDeck{float:left; width:100%; columns: 4; column-gap: 30px; padding:20px;
 	.card{float:left; width:100%; padding:20px; border:1px solid #eee; margin-bottom: 30px; overflow:hidden; break-inside: avoid;
 		a{color:#222;}
@@ -128,12 +130,25 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 	}
 }
 
-.pageHeadline{float:left; width:100%; margin-top: 20px; text-align: center; padding:20px; font-weight: bold; font-size:22px;}
+.pageHeadline{display:flex; align-items: center; justify-content: center; width:100%; margin-top: 20px; text-align: center; padding:20px; font-weight: bold; font-size:22px;}
 
 .developer{display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top:50px;
 	p{margin-bottom:20px; text-align: center; font-size:16px; line-height: 22px; padding:0 20px;}
 }
 
+.pagination{width:100%; display: flex; align-items: center; justify-content: center; flex-direction: column; margin:20px 0;
+	ul.paginationBtns{width:80%; display: flex; align-items: center; justify-content: center;
+		li{
+			a{border:1px solid #ddd; padding:15px; color:#222; display: block; width:auto; height: 50px; text-align: center;}
+		}
+	}
+	.currentPage{display: flex; align-items: center; justify-content: center; width:100%; padding:15px;
+		div{float:left; padding:0 10px;}
+		input{float:left; outline:0; width:60px; height:30px; font-size:15px; text-align: center;}
+	}
+}
+
+.loading{display: flex; align-items: center; justify-content: center;}
 
 @media (max-width: 1023px) {
 	.cardsDeck{columns:1;}

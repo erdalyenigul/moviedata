@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Popular from './views/Popular.vue'
+import Popular from './components/Popular.vue'
 import MovieDetails from './components/MovieDetails.vue'
 import SearchResults from './components/SearchResults.vue'
 import Developer from './components/Developer.vue'
