@@ -9,22 +9,20 @@ export default {
 			baseUrl : 'https://api.themoviedb.org/3/movie/',
 			apiKey : '14e7ff9e6752283576e1930c5878068b',
 			imgUrl : 'https://image.tmdb.org/t/p/original',
-			movieID : '',
 			movieGenres : [],
 			movieTrailer : '',
-			homepage : ''
-			
+			homepage : ''			
 		}
 	},
 	created() {
 		const self = this;
-		axios.get(`${this.baseUrl}${this.$route.params.id}?api_key=${this.apiKey}`)
+		axios.get(`${this.baseUrl}${this.$route.params.movieID}?api_key=${this.apiKey}`)
 		.then((res) => {
 			self.movieDetails = res.data;
 			self.movieGenres = res.data.genres;
 			self.homepage = res.data.homepage;
 		});
-		axios.get(`${this.baseUrl}${this.$route.params.id}/videos?api_key=${this.apiKey}`)
+		axios.get(`${this.baseUrl}${this.$route.params.movieID}/videos?api_key=${this.apiKey}`)
 		.then((res) => {
 			self.movieTrailer = res.data.results;
 		});
@@ -34,6 +32,7 @@ export default {
 
 <template>
 	<div class="movieDetails">
+		aaaa
 		<div class="mdBg">
 			<div class="mdBgOverlay"></div>			
 			<div class="mdBgImg" :style="{ backgroundImage: 'url(' + `${this.imgUrl}${this.movieDetails.backdrop_path}` + ')' }"></div>
@@ -42,6 +41,7 @@ export default {
 	    	<div class="content">
 	    		<div class="poster"><img :src="imgUrl+movieDetails.poster_path"></div>
 	    		<div class="detailsText">
+	    			<div class="score">{{ movieDetails.vote_average }}</div>
 	    			<div class="title">{{ movieDetails.original_title }}</div>
 	    			<ul class="genres">
 	    				<li>Genres : </li>

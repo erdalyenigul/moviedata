@@ -1,6 +1,6 @@
 <template>
   <div class="popular">
-    <div class="pageHeadline">Thousands of pages you can discover the list of popular movies!</div>
+    <div class="pageHeadline">LIST OF POPULAR MOVIES</div>
     <div class="pagination">
         <ul class="paginationBtns">
             <li>
@@ -21,19 +21,18 @@
             <div>Go to : </div>
             <div><input type="text" name="goToPage" v-model="getPage" @keypress.enter="goToPage"></div>
             <div>/ 1000</div>
-            <div v-if="getPage"><a href="javascript:;" @click="goToPage"><i class="ion-md-return-right"></i></a></div>
         </div>
     </div>
     <div v-if="loading" class="loading"><img src="../assets/images/loading.gif"></div>
     <div class="cardsDeck" v-if="!loading">
         <div class="card" v-for="(movie, index) in movies">
-            <div class="voteAverage">{{ movies[index].vote_average }}</div>
             <router-link :to="`/movies/${movies[index].id}`" target="_blank">
                 <div class="poster"><img :src="imgUrl + movies[index].poster_path"></div>
                 <div class="title">{{ movies[index].title }}</div>
             </router-link>
             <div class="overview">{{ movies[index].overview }}</div>
             <div class="releaseDate">Release date : {{ movies[index].release_date }}</div>
+            <div class="voteAverage">Score : {{ movies[index].vote_average }}</div>
             <router-link :to="`/movies/${movies[index].id}`" target="_blank">
                 <div class="details">View Full Details <i class="icon ion-md-link"></i></div>
             </router-link>
@@ -57,8 +56,8 @@ export default {
             page : 1,
             loading : true,
             getPage : '',
-            pageIDinc : 1,
-            pageIDdec : 0
+            pageIDinc : 2,
+            pageIDdec : 1
         }
     },  
     methods : {
@@ -88,9 +87,7 @@ export default {
         },
         goToPage() {
             this.loading = true;
-            this.page = parseFloat(this.getPage);
-            this.pageIDdec = parseFloat(this.getPage);
-        		this.pageIDinc = parseFloat(this.getPage);
+            this.page = this.getPage;
             const self = this;
             axios.get('https://api.themoviedb.org/3/discover/movie?api_key=14e7ff9e6752283576e1930c5878068b&sort_by=popularity.desc&page=' + self.page + '')
             .then((res) => {
@@ -102,6 +99,7 @@ export default {
     },
     created() {              
         this.getPage;
+        console.log('getpage ' + this.getPage);
         this.page = this.pageIDinc;
         const self = this;
         axios.get('https://api.themoviedb.org/3/discover/movie?api_key=14e7ff9e6752283576e1930c5878068b&sort_by=popularity.desc&page=' + self.page + '')
