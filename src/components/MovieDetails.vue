@@ -32,7 +32,6 @@ export default {
 
 <template>
 	<div class="movieDetails">
-		aaaa
 		<div class="mdBg">
 			<div class="mdBgOverlay"></div>			
 			<div class="mdBgImg" :style="{ backgroundImage: 'url(' + `${this.imgUrl}${this.movieDetails.backdrop_path}` + ')' }"></div>
