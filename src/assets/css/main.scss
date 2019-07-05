@@ -44,6 +44,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+html {scroll-behavior: smooth; scroll-behavior: smooth;}
 a{text-decoration: none;}
 *{box-sizing: border-box; transition:all 0.3s ease;}
 body{font-family: 'Muli', sans-serif;}
@@ -67,7 +69,7 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 
 .popular{float:left; width:100%; margin-bottom: 50px;}
 
-.cardsDeck{float:left; width:100%; columns: 4; column-gap: 30px; padding:20px;
+.cardsDeck{float:left; columns: 4; column-gap: 30px; padding:20px;
 	.card{float:left; width:100%; padding:20px; border:1px solid #eee; margin-bottom: 30px; overflow:hidden; break-inside: avoid; position: relative;
 		a{color:#222;}
 		div{display:flex; align-items:center; width:100%; margin-bottom: 20px;}
@@ -77,7 +79,7 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 		.title{font-size:22px; line-height: 26px; font-weight: bold;}
 		.overview{font-size:16px; line-height: 20px;}
 		.releaseDate{font-size:14px;}
-		.voteAverage{position: absolute; left:30px; top:30px; background:rgba(255,255,255,0.9); border:4px solid #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; width:60px; height:60px; text-align: center; font-size:22px; font-weight: bold;}
+		.voteAverage{position: absolute; left:30px; top:30px; background:rgba(255,255,255,0.9); border:4px solid #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; width:60px; height:60px; text-align: center; font-size:18px; font-weight: bold;}
 		.trailer{
 			a{text-decoration: underline; color:#222;}
 		}
@@ -152,6 +154,60 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 
 .loading{display: flex; align-items: center; justify-content: center;}
 
+.hooper-next,.hooper-prev{background-color:#fff;border:none;padding:1em;position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;}
+.hooper-next.is-disabled,.hooper-prev.is-disabled{opacity:0.3;cursor:not-allowed;}
+.hooper-next{right:0;}
+.hooper-prev{left:0;}
+.hooper-navigation.is-vertical .hooper-next{top:auto;bottom:0;transform:initial;}
+.hooper-navigation.is-vertical .hooper-prev{top:0;bottom:auto;right:0;left:auto;transform:initial;}
+.hooper-navigation.is-rtl .hooper-prev{left:auto;right:0;}
+.hooper-navigation.is-rtl .hooper-next{right:auto;left:0;}
+.hooper-slide{flex-shrink:0;height:100%;margin:0;padding:0;list-style:none;}
+.hooper-pagination{position:absolute;bottom:-20px;right:50%;transform:translateX(50%);display:flex;padding:5px 10px;}
+.hooper-indicators{display:flex;list-style:none;margin:0;padding:0;}
+.hooper-indicator:hover,.hooper-indicator.is-active{background-color:#4285f4;}
+.hooper-indicator{margin:0 2px;width:12px;height:4px;border-radius:4px;border:none;padding:0;background-color:#daddad;cursor:pointer;}
+.hooper-pagination.is-vertical{bottom:auto;right:0;top:50%;transform:translateY(-50%);}
+.hooper-pagination.is-vertical .hooper-indicators{flex-direction:column;}
+.hooper-pagination.is-vertical .hooper-indicator{width:6px;}
+.hooper-progress{position:absolute;top:0;right:0;left:0;height:4px;background-color:#efefef;}
+.hooper-progress-inner{height:100%;background-color:#4285f4;transition:300ms;}
+.hooper{position:relative;box-sizing:border-box;width:100%;max-height:400px; height: auto; overflow: hidden;}
+.hooper *{box-sizing:border-box;}
+.hooper-list{overflow:hidden;width:100%;height:100%;}
+.hooper-track{display:flex;box-sizing:border-box;width:100%;height:100%;padding:0;margin:0;}
+.hooper.is-vertical .hooper-track{flex-direction:column;height:200px;}
+.hooper.is-rtl{direction:rtl;}
+.hooper-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);border:0;}
+
+.slideItem{display: flex; align-items: center; justify-content: center; position: relative;
+	.slideContent{position: absolute; left:15%; top:0; right:15%; bottom:0; width:70%; max-height:400px; height:auto; z-index: 2; color:#fff; display: flex; align-items: center; justify-content: center; flex-direction: column;
+		.title{font-size:50px; line-height: 60px; font-weight: bold; margin-bottom: 5px; text-align: center; background:rgba(0,0,0,0.8); padding:15px;
+			.reviewTitleStatic{font-size:20px; font-weight: normal}
+		}
+		.body{font-size:16px; line-height: 28px; text-align: center; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width:100%; margin-bottom: 20px; background:rgba(0,0,0,0.8); padding:15px;}
+		.readMoreBtn{background-color:#6b93c5; color:#fff; padding:15px 20px;
+			&:hover{background-color:#222;}
+		}
+	}
+	img{width:100%; z-index: 1;}
+}
+.reviewsWrap{display:flex; align-items: center; justify-content: center; flex-wrap: wrap; width:100%;
+	.reviewImg{float:left; width:100%; max-height:200px; height: auto; overflow: hidden;
+		img{width:100%; margin-top:-100px;}
+	}	
+	.reviewsContent{max-width:1140px; width:100%;}
+	.reviewsLeft{float:left; width:calc(100% - 360px); padding:30px;
+		.reviewTitle{float:left; width:100%; font-size:30px; margin-bottom: 40px;}
+		.reviewBody{float:left; width:100%;
+			p{float:left; width:100%; padding-bottom:30px; font-size: 16px; line-height: 22px; text-align:justify;}
+		}
+	}
+	.reviewsRight{float:left; width:360px; padding:30px;}
+}
+
+.backToTopID{position: fixed; right:20px; bottom:20px; cursor:pointer; z-index: 4; background: #222; color:#fff; padding:15px;}
+
 @media (max-width: 1023px) {
 	.cardsDeck{columns:1;}
 	.search .inputWrap{width:90%;}
@@ -168,4 +224,15 @@ header {display: flex; align-items: center; justify-content: center; width:100%;
 	.pagination ul.paginationBtns, .pagination .currentPage{margin-bottom: 10px;}
 	.pagination{margin-bottom: 0; margin-top: 20px;}
 	.movieDetails .movieDetailsList .content .detailsText .title{padding-right:0;}
+
+	.slideItem .slideContent{left:0; right:0; width:100%;}
+	.slideItem .slideContent .title{font-size:15px; line-height: 20px;}
+	.slideItem .slideContent .title .reviewTitleStatic{font-size: 13px;}
+	.slideItem .slideContent .body{display: none;}
+	.hooper-next, .hooper-prev{padding:0; outline: 0;}
+	.slideItem .slideContent .readMoreBtn{font-size:14px; padding:10px;}
+	.reviewsWrap .reviewsLeft{width:100%;}
+	.reviewsWrap .reviewsRight{width:100%; text-align: center;}
+	.reviewsWrap .reviewImg img{margin-top: 0;}
+	.reviewsWrap .reviewsLeft .reviewBody p{font-size:15px; line-height: 22px;}
 }

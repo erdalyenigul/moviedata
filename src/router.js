@@ -5,6 +5,7 @@ import MovieDetails from './components/MovieDetails.vue'
 import SearchResults from './components/SearchResults.vue'
 import Developer from './components/Developer.vue'
 import Page from './components/Page.vue'
+import Review from './components/Review.vue'
 
 Vue.use(Router)
 
@@ -34,11 +35,17 @@ export default new Router({
     },
     {
       path : '/searchResults',
-      component : SearchResults
+      name : 'SearchResults',
+      component : SearchResults,
+      props : true
     },
     {
       path : '/developer',
       component : Developer
+    },
+    {
+      path : '/review/:reviewID',
+      component : Review
     }
   ]
 })

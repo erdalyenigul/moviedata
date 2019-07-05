@@ -1,41 +1,46 @@
 <script>
-  import Header from './components/Header';  
-  import axios from 'axios';
+  import Header from './components/Header';    
+  import Search from './components/Search';
+  import axios from 'axios'; 
 
   export default {
     components : {
-      appHeader : Header
+      appHeader : Header,
+      appSearch : Search,     
     },
     data() {
       return {
-        searchKey : '',
-        searchResults : []
+        searchKeyBus : '',
+        showTopBtn: false,
       }
     },
     methods : {
-      searchHandle() {
-        const self = this;
-        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=14e7ff9e6752283576e1930c5878068b&query=${this.searchKey}`)
-        .then((res) => {
-          self.searchResults = res.data.results;
-          console.log(self.searchResults)
-        });  
-        this.$router.push('/searchResults');      
+      searchKey(searchKey) {
+        this.searchKeyBus = searchKey
+      },
+      backToTop () {
+        window.scrollTo(0,0);
+      },
+      handleScroll (event) {
+        if(window.pageYOffset >= 100) {
+          this.showTopBtn = true
+        } else {
+          this.showTopBtn = false
+        }
       }
+    },
+    created() {
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
 </script>
 
 <template>
   <div id="app">
+    <a class="backToTopID" v-if="showTopBtn" @click="backToTop"><i class="ion-md-arrow-up"></i></a>
     <appHeader></appHeader>
-    <div class="search">
-      <div class="inputWrap">
-        <input v-on:keyup.enter="searchHandle" type="text" name="search" placeholder="Search Movie..." v-model="searchKey">      
-          <a href="javascript:;" class="searchBtn" @click="searchHandle">Search</a>
-      </div>
-    </div>
-    <router-view :searchResults="searchResults"></router-view>
+    <appSearch v-on:search-results-data="searchKey($event)"></appSearch>    
+    <router-view :searchKeyBus=searchKeyBus></router-view>
   </div>
 </template>
 
