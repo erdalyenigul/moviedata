@@ -1,30 +1,30 @@
 <template>
-	<hooper :infiniteScroll="true" :itemsToShow="1" :centerMode="true" :autoPlay="false" :playSpeed="5000" :wheelControl="false">
+  <div class="mainSlider">    
+	 <hooper :settings="hooperSettingsMainSlider">
     <template v-for="(slide, index) in reviewsLength">
       <slide>
         <router-link :to="`/review/${index + 1}`">
           <div class="slideItem">
             <div class="slideContent">              
-              <span class="title">{{ reviews[index].title }} <span class="reviewTitleStatic">Review</span></span>
-              <span class="body">{{ reviews[index].body.slice(3) }}</span>
+              <span class="title"><h1>{{ reviews[index].title }} <span class="reviewTitleStatic">Review</span></h1></span>
+              <span class="body"><h2>{{ reviews[index].body.slice(3, 250) }}...</h2></span>
               <span class="readMoreBtn">Read More</span>
             </div>
             <img :src="reviews[index].img">
           </div>
         </router-link>
       </slide>
-    </template>
-      
-      <hooper-navigation slot="hooper-addons"></hooper-navigation>
+    </template>  
+    <hooper-navigation slot="hooper-addons"></hooper-navigation>
     </hooper>
+  </div>
 </template>
 
 <script>
   import reviewsJson from "./reviews.json";
 	import {
     Hooper,
-    Slide,
-    
+    Slide,    
     Navigation as HooperNavigation
     } from 'hooper';
 
@@ -35,13 +35,29 @@
         reviews : [],
         reviewData : '',
         rID : '',
-        reviewsLength : ''
+        reviewsLength : '',     
+        hooperSettingsMainSlider: {
+          itemsToShow : 1,
+          autoPlay : true,
+          playSpeed : 5000,
+          wheelControl : false,
+          centerMode : false,
+          infiniteScroll : true,
+          breakpoints: {
+            0: {
+              itemsToShow: 1,
+              centerMode : true,
+            },
+            768: {
+              itemsToShow: 1,
+            }
+          }
+        }
       }
     },
 		components : {
       Hooper,
-      Slide,
-     
+      Slide,     
       HooperNavigation
     },
     created() {

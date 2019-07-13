@@ -38,15 +38,15 @@ export default {
 		</div>
 		<div class="movieDetailsList">
 	    	<div class="content">
-	    		<div class="poster"><img :src="imgUrl+movieDetails.poster_path"></div>
+	    		<div class="poster"><img :src="imgUrl+movieDetails.poster_path" :alt="movieDetails.title" :title="movieDetails.title"></div>
 	    		<div class="detailsText">
 	    			<div class="score">{{ movieDetails.vote_average }}</div>
-	    			<div class="title">{{ movieDetails.original_title }}</div>
+	    			<div class="title"><h1>{{ movieDetails.title }}</h1></div>
 	    			<ul class="genres">
 	    				<li>Genres : </li>
     					<li v-for="(genre, index) in movieGenres">{{ movieGenres[index].name }}<span>,</span></li>
     				</ul>
-    				<div class="overview">{{ movieDetails.overview }}</div>
+    				<div class="overview"><h2>{{ movieDetails.overview }}</h2></div>
     				<div class="relaseDate">Release Date : {{ movieDetails.release_date }}</div>
     				<div class="imdb">
     					<a :href="`https://www.imdb.com/title/${movieDetails.imdb_id}`" target="_blank">Go to IMDB Page</a>

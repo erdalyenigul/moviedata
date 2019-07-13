@@ -1,23 +1,26 @@
 <script>
-  import Header from './components/Header';    
-  import Search from './components/Search';
   import axios from 'axios'; 
+  import Header from './components/Header';    
+  import Search from './components/Search';  
+  import Footer from './components/Footer';
 
   export default {
     components : {
       appHeader : Header,
-      appSearch : Search,     
+      appSearch : Search, 
+      appFooter : Footer     
     },
     data() {
       return {
         searchKeyBus : '',
+        movieKeyBus : '',
         showTopBtn: false,
       }
     },
     methods : {
       searchKey(searchKey) {
         this.searchKeyBus = searchKey
-      },
+      },      
       backToTop () {
         window.scrollTo(0,0);
       },
@@ -37,10 +40,13 @@
 
 <template>
   <div id="app">
-    <a class="backToTopID" v-if="showTopBtn" @click="backToTop"><i class="ion-md-arrow-up"></i></a>
-    <appHeader></appHeader>
-    <appSearch v-on:search-results-data="searchKey($event)"></appSearch>    
-    <router-view :searchKeyBus=searchKeyBus></router-view>
+      <a class="backToTopID" v-if="showTopBtn" @click="backToTop"><i class="ion-md-arrow-up"></i></a>
+      <appHeader></appHeader>
+      <appSearch v-on:search-results-data="searchKey($event)"></appSearch>    
+      <div class="container">
+        <router-view :searchKeyBus=searchKeyBus></router-view>
+      </div>
+      <appFooter></appFooter>
   </div>
 </template>
 
