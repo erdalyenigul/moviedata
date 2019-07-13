@@ -2,7 +2,7 @@
 
 ## Movie information application 
 
-Demo : http://moviedata.rf.gd/
+Demo : http://dbsmovie.com
 
 ## Project setup
 ```
