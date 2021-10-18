@@ -2,8 +2,6 @@
 
 ## Movie information application 
 
-Demo : http://dbsmovie.com
-
 ## Project setup
 ```
 npm install
