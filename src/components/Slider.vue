@@ -1,5 +1,5 @@
 <template>
-  <div class="mainSlider">    
+  <div class="mainSlider">
 	 <hooper :settings="hooperSettingsMainSlider">
     <template v-for="(slide, index) in reviewsLength">
       <slide>

@@ -86,7 +86,7 @@ export default {
 
 <template>
   <div class="popular">
-    <appSlider></appSlider>
+    <!-- <appSlider></appSlider> -->
     <div class="banner banner728"></div>
     <appTrailers></appTrailers>
     <div class="pageHeadline"><h1>Hundreds of pages you can discover the list of trending movies!</h1></div>    
